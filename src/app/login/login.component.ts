@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  
 
   constructor(private userService:UserService, private fb:FormBuilder,private router:Router) { }
 
@@ -27,7 +28,7 @@ export class LoginComponent implements OnInit {
       let {username,password}=this.loginDetails.value
    let authData:any= this.userService.authHandler(username)
    if(authData){
-    password===authData["password"]?this.router.navigate(['/home']):this.router.navigate(['/','home'])
+    password===authData["password"]?this.router.navigate(['/home']): this.router.navigate(['/','login'])
    }
     }
     

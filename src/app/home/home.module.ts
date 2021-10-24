@@ -4,7 +4,7 @@ import { HomeComponent } from './home.component';
 import { UserComponent } from './user/user.component';
 import { RouterModule, Routes } from '@angular/router';
 import { MaterialModule } from '../shared/module/material/material.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const routes:Routes=[
   {
@@ -22,7 +22,8 @@ const routes:Routes=[
     CommonModule,
     RouterModule.forChild(routes),
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class HomeModule { }

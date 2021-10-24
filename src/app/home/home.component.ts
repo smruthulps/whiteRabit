@@ -1,5 +1,6 @@
 import { UserService } from './../user.service';
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -9,8 +10,20 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
   employeeDetails:any;
   Dbdetails:any
-
+  search:any;
   constructor(private userservice:UserService) { }
+  searchName(){
+    this.employeeDetails = this.userservice.getUser();
+    if(this.search){
+      this.employeeDetails = this.employeeDetails.filter((data:any)=>{
+        let smallcase=data.name.first
+        smallcase=smallcase.toLowerCase()
+        this.search=this.search.toLowerCase()
+        return smallcase.includes(this.search)
+      })
+      console.log(this.employeeDetails)
+    }   
+  }
 
   ngOnInit(): void {
     this.employeeDetails= this.userservice.getUser();
@@ -32,6 +45,7 @@ export class HomeComponent implements OnInit {
           phone:tempData.phone
         }
       })
+
       this.userservice.setuser(this.employeeDetails);
     })
 
