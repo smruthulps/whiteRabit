@@ -1,0 +1,18 @@
+<div class="main">
+    <mat-card>
+        <mat-card-title>
+            Employee Details
+        </mat-card-title>
+        <mat-card-content>
+            <mat-list>
+                <mat-list-item *ngFor="let employee of employeeDetails">
+                    <div class="list">
+                        <label for="">Name</label><label for="">{{employee.name.title}} {{employee.name.first}} {{employee.name.last}}</label>
+                    </div>
+                </mat-list-item>
+            </mat-list>
+        </mat-card-content>
+    </mat-card>
+    <app-user (update)="updateList()" ></app-user>
+
+</div>
